@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MiniCore.Views.DepartamentoPage"
+             Title="Gestión de Departamentos">
+    <ContentPage.Content>
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="10">
+                <!-- Contenido principal -->
+                <Entry x:Name="NombreDepartamentoEntry" Placeholder="Nombre del Departamento" />
+
+                <Button Text="Guardar"
+                        BackgroundColor="LightBlue"
+                        TextColor="Black"
+                        CornerRadius="10"
+                        HorizontalOptions="Center"
+                        WidthRequest="200"
+                        Clicked="OnSaveClicked" />
+
+                <!-- ListView para Mostrar Departamentos -->
+                <ListView x:Name="DepartamentoListView" 
+                          ItemsSource="{Binding Departamentos}" 
+                          SelectedItem="{Binding SelectedDepartamento}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10">
+                                    <!-- Nombre del Departamento -->
+                                    <Label Text="{Binding Nombre}" 
+                                           VerticalOptions="Center" 
+                                           Grid.Column="0" />
+
+                                    <!-- Botones Editar y Eliminar -->
+                                    <StackLayout Orientation="Horizontal"
+                                                 Spacing="10"
+                                                 HorizontalOptions="End"
+                                                 Grid.Column="1">
+                                        <Button Text="Editar"
+                                                BackgroundColor="Yellow"
+                                                TextColor="Black"
+                                                CornerRadius="10"
+                                                Clicked="OnEditClicked" />
+                                        <Button Text="Eliminar"
+                                                BackgroundColor="Red"
+                                                TextColor="Black"
+                                                CornerRadius="10"
+                                                Clicked="OnDeleteClicked" />
+                                    </StackLayout>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <!-- Botones horizontales -->
+                <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                    <Button Text="Gestionar Empleados"
+                            BackgroundColor="LightGreen"
+                            TextColor="Black"
+                            CornerRadius="10"
+                            WidthRequest="220"
+                            Clicked="OnEmpleadoClicked" />
+
+                    <Button Text="Gestión de Gastos" 
+                            BackgroundColor="LightGreen" 
+                            TextColor="Black" 
+                            CornerRadius="10" 
+                            WidthRequest="220"
+                            Clicked="OnGastosClicked" />
+
+                    <Button Text="Filtrar por Fechas"
+                            BackgroundColor="LightGreen"
+                            TextColor="Black"
+                            CornerRadius="10"
+                            WidthRequest="220"
+                            Clicked="OnFiltrarClicked" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

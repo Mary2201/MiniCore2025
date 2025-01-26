@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MiniCore.Views.FiltradoFechasPage"
+             Title="Filtrado de Fechas">
+    <ContentPage.Content>
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="10">
+                <!-- Selección de Fechas -->
+                <Label Text="Seleccione el rango de fechas" 
+                       FontSize="18" 
+                       FontAttributes="Bold" />
+                <DatePicker x:Name="FechaInicioPicker" />
+                <DatePicker x:Name="FechaFinPicker" />
+
+                <Button Text="Filtrar" 
+                        BackgroundColor="LightBlue" 
+                        TextColor="Black" 
+                        CornerRadius="10" 
+                        HorizontalOptions="Center"
+                        WidthRequest="200"
+                        Clicked="OnFiltrarClicked" />
+
+                <!-- Tabla de Resultados -->
+                <CollectionView x:Name="ResultadosCollectionView">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="5" ColumnDefinitions="*,Auto">
+                                <!-- Nombre del Departamento -->
+                                <Label Text="{Binding Departamento}" 
+                                       FontSize="16" 
+                                       VerticalOptions="Center" />
+                                <!-- Total -->
+                                <Label Text="{Binding Total}" 
+                                       FontSize="16" 
+                                       VerticalOptions="Center" 
+                                       HorizontalOptions="End" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <!-- Botones horizontales -->
+                <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                    <Button Text="Gestionar Empleados"
+                            BackgroundColor="LightGreen"
+                            TextColor="Black"
+                            CornerRadius="10"
+                            WidthRequest="220"
+                            Clicked="OnEmpleadoClicked" />
+
+                    <Button Text="Gestionar Departamentos"
+                            BackgroundColor="LightGreen"
+                            TextColor="Black"
+                            CornerRadius="10"
+                            WidthRequest="220"
+                            Clicked="OnDepartamentoClicked" />
+
+                    <Button Text="Gestionar Gastos"
+                            BackgroundColor="LightGreen"
+                            TextColor="Black"
+                            CornerRadius="10"
+                            WidthRequest="220"
+                            Clicked="OnGastosClicked" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
